@@ -1,0 +1,124 @@
+{%  trans_default_domain 'home' %}
+
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $( function() {
+            $('#search_region').autocomplete({
+                source: '{{ path('ajax') }}',
+                minLength: 2,
+            });
+        })
+    </script>
+{% endblock %}
+
+{% block body %}
+    <section class="jobguru-banner-area">
+        <div class="banner-slider owl-carousel">
+            <div class="banner-single-slider slider-item-1">
+                <div class="slider-offset"></div>
+            </div>
+            <div class="banner-single-slider slider-item-2">
+                <div class="slider-offset"></div>
+            </div>
+            <div class="banner-single-slider slider-item-3">
+                <div class="slider-offset"></div>
+            </div>
+            <div class="banner-single-slider slider-item-4">
+                <div class="slider-offset"></div>
+            </div>
+            <div class="banner-single-slider slider-item-5">
+                <div class="slider-offset"></div>
+            </div>
+        </div>
+        <div class="banner-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="banner-search">
+                            <h2>{{ 'temporary work expert'|trans }}</h2>
+                            {% if jobsCount > 1 %}
+                                <h4>{{ jobsCount }} {{ 'currently availables'|trans }}</h4>
+                            {% else %}
+                                <h4>{{ jobsCount }} {{ 'currently available'|trans }}</h4>
+                            {% endif %}
+                            {{ form_start(searchForm) }}
+                                <div class="banner-form-box">
+                                    <div class="banner-form-input">
+                                        {{ form_errors(searchForm.title) }}
+                                        {{ form_widget(searchForm.title) }}
+                                    </div>
+                                    <div class="banner-form-input">
+                                        {{ form_errors(searchForm.region) }}
+                                        {{ form_widget(searchForm.region, {'attr': {'placeholder':'Saisissez un département'}}) }}
+                                    </div>
+                                    <div class="banner-form-input">
+                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            {{ form_end(searchForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Area End -->
+
+    <!-- Job Tab Area Start -->
+    <section class="jobguru-job-tab-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2>{{ 'our last jobs'|trans }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-companies" role="tabpanel" aria-labelledby="pills-companies-tab">
+                            <div class="top-company-tab">
+                                <ul>
+                                    {% for job in jobs %}
+                                    <li>
+                                        <div class="top-company-list">
+                                            <div class="company-list-logo">
+                                                <a href="#">
+                                                    <i class="fa fa-4x fa-industry"></i>
+                                                </a>
+                                            </div>
+                                            <div class="company-list-details">
+                                                <h3><a href="#">{{ job.title.name }}</a></h3>
+                                                <p class="company-state"><i class="fa fa-map-marker"></i>{{ job.city }}, {{ job.region }}</p>
+                                                <p class="open-icon"><i class="fa fa-briefcase"></i>{{ job.type }}</p>
+                                                <p class="calendar-icn"><i class="fa fa-calendar"></i>{{ 'published at'|trans }} {{ job.postedAt|date('d/m/Y') }}</p>
+                                            </div>
+                                            <div class="company-list-btn">
+                                                <a href="{{ path('job_details', {'id':job.id} ) }}" class="jobguru-btn">{{ 'view advert'|trans }}</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="load-more">
+                        <a href="{{ path('jobs_grid') }}" class="jobguru-btn">{{ 'show more'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Job Tab Area End -->
+
+{% endblock %}

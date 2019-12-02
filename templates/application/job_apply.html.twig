@@ -1,0 +1,363 @@
+{% trans_default_domain 'application' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}VFC | {{ 'appliant space'|trans }}{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#curriculumCheckbox').click(function () {
+            if($('#curriculumCheckbox').prop('checked')) {
+                $('#curriculumDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#curriculumDiv').addClass("hideDiv");
+            }
+        });
+        $('#vitalCardCheckbox').click(function () {
+            if($('#vitalCardCheckbox').prop('checked')) {
+                $('#vitalCardDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#vitalCardDiv').addClass("hideDiv");
+            }
+        });
+        $('#idCardCheckbox').click(function () {
+            if($('#idCardCheckbox').prop('checked')) {
+                $('#idCardDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#idCardDiv').addClass("hideDiv");
+            }
+        });
+        $('#medicalVisitCheckbox').click(function () {
+            if($('#medicalVisitCheckbox').prop('checked')) {
+                $('#medicalVisitDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#medicalVisitDiv').addClass("hideDiv");
+            }
+        });
+        $('#licensesCheckbox').click(function () {
+            if($('#licensesCheckbox').prop('checked')) {
+                $('#licensesDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#licensesDiv').addClass("hideDiv");
+            }
+        });
+        $('#clearancesCheckbox').click(function () {
+            if($('#clearancesCheckbox').prop('checked')) {
+                $('#clearancesDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#clearancesDiv').addClass("hideDiv");
+            }
+        });
+        $('#securityFormationCheckbox').click(function () {
+            if($('#securityFormationCheckbox').prop('checked')) {
+                $('#securityFormationDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#securityFormationDiv').addClass("hideDiv");
+            }
+        });
+        $('#homeJustificationCheckbox').click(function () {
+            if($('#homeJustificationCheckbox').prop('checked')) {
+                $('#homeJustificationDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#homeJustificationDiv').addClass("hideDiv");
+            }
+        });
+        $('#ribCheckbox').click(function () {
+            if($('#ribCheckbox').prop('checked')) {
+                $('#ribDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#ribDiv').addClass("hideDiv");
+            }
+        });
+        $('#drivingLicenseCheckbox').click(function () {
+            if($('#drivingLicenseCheckbox').prop('checked')) {
+                $('#drivingLicenseDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#drivingLicenseDiv').addClass("hideDiv");
+            }
+        });
+        $('#grayCardCheckbox').click(function () {
+            if($('#grayCardCheckbox').prop('checked')) {
+                $('#grayCardDiv').removeClass("hideDiv");
+            }
+            else {
+                $('#grayCardDiv').addClass("hideDiv");
+            }
+        })
+    </script>
+{% endblock %}
+
+{% block body %}
+    <!-- Breadcromb Area Start -->
+    <section class="jobguru-breadcromb-area">
+
+    </section>
+    <!-- Breadcromb Area End -->
+
+    <!-- Submit Resume Area Start -->
+    <section class="jobguru-submit-resume-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="submit-resume-box">
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {{ form_start(form) }}
+                            <div class="resume-box">
+                                <h3>{{ 'application for'|trans }} : <a href="{{ path('job_details', {'id':job.id}) }}" >{{ job.title.name }}</a></h3>
+                                <div class="single-resume-feild feild-flex-2">
+                                    <div class="single-input">
+                                        <label>{{ 'firstname'|trans }}</label>
+                                        {{ form_errors(form.firstname) }}
+                                        {{ form_widget(form.firstname) }}
+                                    </div>
+                                    <div class="single-input">
+                                        <label>{{ 'lastname'|trans }}</label>
+                                        {{ form_errors(form.lastname) }}
+                                        {{ form_widget(form.lastname) }}
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild-flex-2">
+                                    <div class="single-input">
+                                        <label>{{ 'email'|trans }}</label>
+                                        {{ form_errors(form.email) }}
+                                        {{ form_widget(form.email) }}
+                                    </div>
+                                    <div class="single-input">
+                                        <label>{{ 'phone'|trans }}</label>
+                                        {{ form_errors(form.phone) }}
+                                        {{ form_widget(form.phone) }}
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild">
+                                    <div class="single-input">
+                                        <label>{{ 'message'|trans }}</label>
+                                        {{ form_errors(form.message) }}
+                                        {{ form_widget(form.message) }}
+                                    </div>
+                                </div>
+                                <h3>{{ 'choose files'|trans }}</h3>
+                                <div class="single-resume-feild feild-flex-2">
+                                    <div class="single-input">
+                                        <ul>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="curriculumCheckbox" />
+                                                <label for="curriculumCheckbox"><span></span>{{ 'curriculum'|trans }}</label>
+                                            </li>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="vitalCardCheckbox" />
+                                                <label for="vitalCardCheckbox"><span></span>{{ 'vitalCard'|trans }}</label>
+                                            </li>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="idCardCheckbox" />
+                                                <label for="idCardCheckbox"><span></span>{{ 'idCard'|trans }}</label>
+                                            </li>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="medicalVisitCheckbox" />
+                                                <label for="medicalVisitCheckbox"><span></span>{{ 'medicalVisit'|trans }}</label>
+                                            </li>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="licensesCheckbox" />
+                                                <label for="licensesCheckbox"><span></span>{{ 'licenses'|trans }}</label>
+                                            </li>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="clearancesCheckbox" />
+                                                <label for="clearancesCheckbox"><span></span>{{ 'clearances'|trans }}</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="single-input">
+                                        <ul>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="securityFormationCheckbox" />
+                                                <label for="securityFormationCheckbox"><span></span>{{ 'securityFormation'|trans }}</label>
+                                            </li>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="homeJustificationCheckbox" />
+                                                <label for="homeJustificationCheckbox"><span></span>{{ 'homeJustification'|trans }}</label>
+                                            </li>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="ribCheckbox" />
+                                                <label for="ribCheckbox"><span></span>{{ 'rib'|trans }}</label>
+                                            </li>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="drivingLicenseCheckbox" />
+                                                <label for="drivingLicenseCheckbox"><span></span>{{ 'drivingLicense'|trans }}</label>
+                                            </li>
+                                            <li class="checkbox">
+                                                <input class="checkbox-spin" type="checkbox" id="grayCardCheckbox" />
+                                                <label for="grayCardCheckbox"><span></span>{{ 'grayCard'|trans }}</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="curriculumDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'curriculum'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.cv) }}
+                                            {{ form_widget(form.cv) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="vitalCardDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'vitalCard'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.vitalCard) }}
+                                            {{ form_widget(form.vitalCard) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="idCardDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'idCard'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.idCard) }}
+                                            {{ form_widget(form.idCard) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="medicalVisitDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'medicalVisit'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.medicalVisit) }}
+                                            {{ form_widget(form.medicalVisit) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="licensesDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'licenses'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.licenses) }}
+                                            {{ form_widget(form.licenses) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="clearancesDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'clearances'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.clearances) }}
+                                            {{ form_widget(form.clearances) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="securityFormationDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'securityFormation'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.securityFormation) }}
+                                            {{ form_widget(form.securityFormation) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="homeJustificationDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'homeJustification'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.homeJustification) }}
+                                            {{ form_widget(form.homeJustification) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="ribDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'rib'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.rib) }}
+                                            {{ form_widget(form.rib) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="drivingLicenseDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'drivingLicense'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.drivingLicense) }}
+                                            {{ form_widget(form.drivingLicense) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-resume-feild feild hideDiv" id="grayCardDiv">
+                                    <div class="single-input">
+                                        <label>{{ 'grayCard'|trans }}</label>
+                                        <div class="product-upload">
+                                            <p>
+                                                <i class="fa fa-upload"></i>
+                                                {{ 'upload info'|trans }}
+                                            </p>
+                                            {{ form_errors(form.grayCard) }}
+                                            {{ form_widget(form.grayCard) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="submit-resume">
+                                <button type="submit" class="submitApplication">{{ 'send'|trans }}</button>
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Submit Resume Area End -->
+{% endblock %}

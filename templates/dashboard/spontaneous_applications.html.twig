@@ -1,0 +1,78 @@
+{% trans_default_domain 'dashboard' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'dashboard'|trans }}{% endblock %}
+
+{% block body %}
+    <!-- Breadcromb Area Start -->
+    <section class="jobguru-breadcromb-area">
+
+    </section>
+    <!-- Breadcromb Area End -->
+
+
+    <!-- Candidate Dashboard Area Start -->
+    <section class="candidate-dashboard-area section_70">
+        <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="row">
+                <div class="col-md-12 col-lg-3 dashboard-left-border">
+                    <div class="dashboard-left">
+                        <ul class="dashboard-menu">
+                            <li class="active"><a href="{{ path('dashboard_applications') }}"><i class="fa fa-users"></i>{{ 'cv list spontaneous'|trans }}</a></li>
+                            <li><a href="{{ path('applications') }}"><i class="fa fa-user"></i>{{ 'cv list'|trans }}</a></li>
+                            <li><a href="{{ path('dashboard_jobs') }}"><i class="fa fa-gear"></i>{{ 'job offers'|trans }}</a></li>
+                            <li><a href="{{ path('jobs_name') }}"><i class="fa fa-pencil"></i>{{ 'jobs name'|trans }}</a></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i>{{ 'logout'|trans }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-9">
+                    <div class="dashboard-right">
+                        <div class="manage-jobs manage-candidates">
+                            <div class="manage-jobs-heading">
+                                <h3>{{ 'manage cv spontaneous'|trans }} ({{ spontaneous_applicationsNb }})</h3>
+                            </div>
+                        </div>
+                        <div class="candidate-list-page">
+                            {% for application in applications %}
+                                <div class="single-candidate-list">
+                                    <div class="main-comment">
+                                        <div class="candidate-text">
+                                            <div class="candidate-info">
+                                                <div class="candidate-title">
+                                                    <h3>{{ application.firstname|capitalize }} {{ application.lastname|upper }}</h3>
+                                                </div>
+                                                <p><b><i class="fa fa-phone"></i> :</b> {{ application.phone }}</p>
+                                                <p><b><i class="fa fa-at"></i> :</b> {{ application.email }}</p>
+                                                <p><b><i class="fa fa-calendar"></i> :</b> {{ application.uploadedAt|date('d/m/Y') }}</p>
+                                                {% if application.message != '' %}
+                                                    <p><b><i class="fa fa-comment"></i> :</b> {{ application.message }}</p>
+                                                {% endif %}
+                                            </div>
+                                            <div class="candidate-text-bottom">
+                                                <div class="candidate-action">
+                                                    {% if application.cv != null or application.vitalCard != null or application.idCard != null or application.medicalVisit != null or application.licenses != null or application.clearances != null or application.securityFormation != null or application.homeJustification != null or application.rib != null or application.drivingLicense != null or application.grayCard != null %}
+                                                        <a href="uploads/applications/{{ application.token }}.zip" download="{{ application.firstname }}-{{ application.lastname }}" class="btn btn-success"> <i class="fa fa-download"></i></a>
+                                                    {% endif %}
+                                                    <a href="{{ path('delete_application', {'id': application.id}) }}" onclick="return confirm('{{ 'confirm'|trans }}')" class="btn btn-danger"> <i class="fa fa-trash"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {{ knp_pagination_render(applications) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Candidate Dashboard Area End -->
+{% endblock %}

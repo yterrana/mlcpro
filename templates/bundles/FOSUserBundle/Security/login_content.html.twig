@@ -1,0 +1,49 @@
+{% trans_default_domain 'base' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<!-- Breadcromb Area Start -->
+<section class="jobguru-breadcromb-area">
+
+</section>
+<!-- Breadcromb Area End -->
+
+
+<!-- Login Area Start -->
+<section class="jobguru-login-area section_70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="login-box">
+                    <div class="login-title">
+                        <h3>{{ 'admin space'|trans }}</h3>
+                    </div>
+
+                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+
+                        <div class="single-login-field">
+                            <label for="username">{{ 'username'|trans }}</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                        </div>
+                        <div class="single-login-field">
+                            <label for="password">{{ 'password'|trans }}</label>
+                            <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+                        </div>
+
+                        <div class="single-login-field">
+                            <button type="submit" class="submitLogin">{{ 'login'|trans }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Login Area End -->
+
+

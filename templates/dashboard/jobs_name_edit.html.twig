@@ -1,0 +1,66 @@
+{% trans_default_domain 'dashboard' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'dashboard'|trans }}{% endblock %}
+
+{% block body %}
+    <!-- Breadcromb Area Start -->
+    <section class="jobguru-breadcromb-area">
+
+    </section>
+    <!-- Breadcromb Area End -->
+
+    <!-- Candidate Dashboard Area Start -->
+    <section class="candidate-dashboard-area section_70">
+        <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="row">
+                <div class="col-md-12 col-lg-3 dashboard-left-border">
+                    <div class="dashboard-left">
+                        <ul class="dashboard-menu">
+                            <li><a href="{{ path('dashboard_applications') }}"><i class="fa fa-users"></i>{{ 'cv list'|trans }}</a></li>
+                            <li><a href="{{ path('applications') }}"><i class="fa fa-user"></i>{{ 'cv list'|trans }}</a></li>
+                            <li><a href="{{ path('dashboard_jobs') }}"><i class="fa fa-gear"></i>{{ 'job offers'|trans }}</a></li>
+                            <li class="active"><a href="{{ path('jobs_name') }}"><i class="fa fa-pencil"></i>{{ 'jobs name'|trans }}</a></li>
+                            <li ><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i>{{ 'logout'|trans }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-9">
+                    <div class="dashboard-right">
+                        <div class="manage-jobs manage-candidates">
+                            <div class="manage-jobs-heading">
+                                <h3>{{ 'editing JobName'|trans }}</h3>
+                            </div>
+                        </div>
+                        <div class="candidate-list-page">
+                            <div class="earnings-page-box manage-jobs">
+                                <div class="new-job-submission">
+                                    {{ form_start(form) }}
+                                    <div class="modal-body">
+                                        <div class="single-input">
+                                            <label>{{ 'title'|trans }}</label>
+                                            {{ form_errors(form.name) }}
+                                            {{ form_widget(form.name) }}
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'close'|trans }}</button>
+                                        <button type="submit" class="btn btn-primary">{{ 'edit'|trans }}</button>
+                                    </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Candidate Dashboard Area End -->
+{% endblock %}

@@ -1,0 +1,72 @@
+{%  trans_default_domain 'home' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'vfc presentation'|trans }}{% endblock %}
+
+{% block body %}
+    <!-- Breadcromb Area Start -->
+    <section class="jobguru-breadcromb-area">
+        <div class="breadcromb-top section_100">
+
+        </div>
+    </section>
+    <!-- Breadcromb Area End -->
+
+    <!-- Team Area Start -->
+    <section class="jobguru-team-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2 class="presentationSocietyTitle">{{ 'our expertise'|trans }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <p class="presentationSocietyText">{{ 'vfc expertise'|trans|raw }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Area End -->
+
+    <!-- Pricing Area Start -->
+    <section class="jobguru-pricing-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2 class="presentationSocietyTitle">{{ 'our service'|trans }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <p class="presentationSocietyText">{{ 'vfc service'|trans|raw }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pricing Area End -->
+
+    <!-- Team Area Start -->
+    <section class="jobguru-team-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading site-heading-custom">
+                        <h2 class="presentationSocietyTitle">{{ 'affectation domains'|trans }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <p class="presentationSocietyText">{{ 'vfc domains'|trans|raw }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Area End -->
+{% endblock %}

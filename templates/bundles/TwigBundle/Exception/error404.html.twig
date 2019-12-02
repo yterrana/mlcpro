@@ -1,0 +1,32 @@
+{% trans_default_domain 'base' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'page doesnt exist'|trans }}{% endblock %}
+
+{% block body %}
+    <!-- Breadcromb Area Start -->
+    <section class="jobguru-breadcromb-area">
+
+    </section>
+    <!-- Breadcromb Area End -->
+
+    <!-- Submit Resume Area Start -->
+    <section class="jobguru-submit-resume-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="submit-resume-box">
+                        <div class="resume-box">
+                            <h1>{{ 'page doesnt exist'|trans }}</h1>
+                        </div>
+                        <div class="submit-resume">
+                            <a href="{{ path('home') }}" class="jobguru-btn"><i class="fa fa-home"></i> {{ 'back home'|trans }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Submit Resume Area End -->
+{% endblock %}

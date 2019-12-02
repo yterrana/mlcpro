@@ -1,0 +1,131 @@
+{% trans_default_domain 'dashboard' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'dashboard'|trans }}{% endblock %}
+
+{% block body %}
+    <!-- Breadcromb Area Start -->
+    <section class="jobguru-breadcromb-area">
+
+    </section>
+    <!-- Breadcromb Area End -->
+
+    <!-- Candidate Dashboard Area Start -->
+    <section class="candidate-dashboard-area section_70">
+        <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="row">
+                <div class="col-md-12 col-lg-3 dashboard-left-border">
+                    <div class="dashboard-left">
+                        <ul class="dashboard-menu">
+                            <li><a href="{{ path('dashboard_applications') }}"><i class="fa fa-users"></i>{{ 'cv list'|trans }}</a></li>
+                            <li><a href="{{ path('applications') }}"><i class="fa fa-user"></i>{{ 'cv list'|trans }}</a></li>
+                            <li><a href="{{ path('dashboard_jobs') }}"><i class="fa fa-gear"></i>{{ 'job offers'|trans }}</a></li>
+                            <li class="active"><a href="{{ path('jobs_name') }}"><i class="fa fa-pencil"></i>{{ 'jobs name'|trans }}</a></li>
+                            <li ><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i>{{ 'logout'|trans }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-9">
+                    <div class="dashboard-right">
+                        <div class="manage-jobs manage-candidates">
+                            <div class="manage-jobs-heading">
+                                <h3>{{ 'manage jobs name'|trans }} ({{ jobsNameNb }}) - <button type="button" class="btn btn-circle btn-primary" data-toggle="modal" data-target="#addJobNameModal"><i class="fa fa-plus"></i></button></h3>
+                            </div>
+                        </div>
+                        <!-- Modal add -->
+                        <div class="modal fade" id="addJobNameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">{{ 'adding JobName'|trans }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {{ form_start(form) }}
+                                        <div class="modal-body">
+                                            <div class="single-input">
+                                                <label>{{ 'title'|trans }}</label>
+                                                {{ form_errors(form.name) }}
+                                                {{ form_widget(form.name) }}
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'close'|trans }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ 'add'|trans }}</button>
+                                        </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal edit -->
+                        <div class="modal fade" id="editJobNameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">{{ 'editing JobName'|trans }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {{ form_start(form) }}
+                                        <div class="modal-body">
+                                            <div class="single-input">
+                                                <label>{{ 'title'|trans }}</label>
+                                                {{ form_errors(form.name) }}
+                                                {{ form_widget(form.name) }}
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'close'|trans }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ 'edit'|trans }}</button>
+                                        </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="candidate-list-page">
+                            <div class="manage-jobs">
+                                <div class="single-manage-jobs table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>{{ 'title'|trans }}</th>
+                                            <th>{{ 'action'|trans }}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for jobName in jobsName %}
+                                            <tr>
+                                                <td class="manage-jobs-title">{{ jobName.name }}</td>
+                                                <td>
+                                                    <a href="{{ path('jobs_name_edit', {'id':jobName.id}) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                    <a href="{{ path('delete_job_name', {'id':jobName.id}) }}" class="btn btn-danger" onclick="return confirm('{{ 'confirm'|trans }}')"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                    <div class="text-center">
+                                        {{ knp_pagination_render(jobsName) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Candidate Dashboard Area End -->
+{% endblock %}

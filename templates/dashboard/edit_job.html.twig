@@ -1,0 +1,104 @@
+{% trans_default_domain 'dashboard' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'dashboard'|trans }}{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $( function() {
+            $('#job_region').autocomplete({
+                source: '{{ path('ajax') }}',
+                minLength: 2,
+            });
+        })
+    </script>
+{% endblock %}
+
+{% block body %}
+    <!-- Breadcromb Area Start -->
+    <section class="jobguru-breadcromb-area">
+
+    </section>
+    <!-- Breadcromb Area End -->
+
+    <!-- Candidate Dashboard Area Start -->
+    <section class="candidate-dashboard-area section_70">
+        <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="row">
+                <div class="col-md-12 col-lg-3 dashboard-left-border">
+                    <div class="dashboard-left">
+                        <ul class="dashboard-menu">
+                            <li><a href="{{ path('dashboard_applications') }}"><i class="fa fa-users"></i>{{ 'cv list'|trans }}</a></li>
+                            <li><a href="{{ path('applications') }}"><i class="fa fa-user"></i>{{ 'cv list'|trans }}</a></li>
+                            <li class="active"><a href="{{ path('dashboard_jobs') }}"><i class="fa fa-gear"></i>{{ 'job offers'|trans }}</a></li>
+                            <li><a href="{{ path('jobs_name') }}"><i class="fa fa-pencil"></i>{{ 'jobs name'|trans }}</a></li>
+                            <li ><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i>{{ 'logout'|trans }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-9">
+                    <div class="dashboard-right">
+                        <div class="manage-jobs manage-candidates">
+                            <div class="manage-jobs-heading">
+                                <h3><a href="{{ path('dashboard_jobs') }}" class="btn btn-circle btn-primary"><i class="fa fa-arrow-left"></i></a> - {{ 'edit job'|trans }}</h3>
+                            </div>
+                        </div>
+                        <div class="candidate-list-page">
+                            <div class="earnings-page-box manage-jobs">
+                                <div class="new-job-submission">
+                                    {{ form_start(form) }}
+                                    <div class="resume-box">
+                                        <div class="single-resume-feild feild-flex-2">
+                                            <div class="single-input">
+                                                <label>{{ 'job title'|trans }}</label>
+                                                {{ form_errors(form.title) }}
+                                                {{ form_widget(form.title) }}
+                                            </div>
+                                            <div class="single-input">
+                                                <label>{{ 'city'|trans }}</label>
+                                                {{ form_errors(form.city) }}
+                                                {{ form_widget(form.city) }}
+                                            </div>
+                                        </div>
+                                        <div class="single-resume-feild feild-flex-2">
+                                            <div class="single-input">
+                                                <label>{{ 'region'|trans }}</label>
+                                                {{ form_errors(form.region) }}
+                                                {{ form_widget(form.region) }}
+                                            </div>
+                                            <div class="single-input">
+                                                <label>{{ 'type'|trans }}</label>
+                                                {{ form_errors(form.type) }}
+                                                {{ form_widget(form.type) }}
+                                            </div>
+                                        </div>
+                                        <div class="single-resume-feild">
+                                            <div class="single-input">
+                                                <label>{{ 'description'|trans }}</label>
+                                                {{ form_errors(form.description) }}
+                                                {{ form_widget(form.description) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-input text-center">
+                                        <button class="btn btn-success" type="submit">{{ 'edit'|trans }}</button>
+                                        <button class="btn btn-danger" type="reset">{{ 'reset'|trans }}</button>
+                                    </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Candidate Dashboard Area End -->
+{% endblock %}

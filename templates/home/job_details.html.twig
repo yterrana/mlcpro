@@ -1,0 +1,73 @@
+{%  trans_default_domain 'home' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}VFC | {{ job.title.name|upper }}{% endblock %}
+
+{% block body %}
+    <!-- Single Candidate Start -->
+    <section class="single-candidate-page section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="single-candidate-box">
+                        <div class="single-candidate-box-right">
+                            <h4>{{ job.title.name|upper }}</h4>
+                            <div class="job-details-meta">
+                                <p><i class="fa fa-calendar"></i> {{ job.postedAt|date('d/m/Y') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="single-candidate-action">
+                        <a href="{{ path('application_id', {'id':job.id}) }}" class="candidate-contact"><i class="fa fa-envelope"></i> {{ 'candidate'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Single Candidate End -->
+
+    <!-- Single Candidate Bottom Start -->
+    <section class="single-candidate-bottom-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-lg-9">
+                    <div class="single-candidate-bottom-left">
+                        <div class="single-candidate-widget">
+                            <h3>{{ 'job description'|trans }}</h3>
+                            <p>{{ job.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="single-candidate-bottom-right">
+                        <div class="single-candidate-widget-2">
+                            <h3>{{ 'offer details'|trans }}</h3>
+                            <ul class="job-overview">
+                                <li>
+                                    <h4><i class="fa fa-briefcase"></i> {{ 'salary'|trans }}</h4>
+                                    <p>{{ 'about profile'|trans }}</p>
+                                </li>
+                                <li>
+                                    <h4><i class="fa fa-map-marker"></i> {{ 'location'|trans }}</h4>
+                                    <p>{{ job.city }}, {{ job.region|upper }}</p>
+                                </li>
+                                <li>
+                                    <h4><i class="fa fa-thumb-tack"></i> {{ 'type'|trans }}</h4>
+                                    <p>{{ job.type }}</p>
+                                </li>
+                                <li>
+                                    <h4><i class="fa fa-clock-o"></i> {{ 'posted at'|trans }}</h4>
+                                    <p>{{ job.postedAt|localizeddate('none', 'none', null, null, 'd MMMM Y')}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Single Candidate Bottom End -->
+{% endblock %}

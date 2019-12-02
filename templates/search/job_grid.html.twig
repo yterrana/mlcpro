@@ -1,0 +1,89 @@
+{% trans_default_domain 'search' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $( function() {
+            $('#search_region').autocomplete({
+                source: '{{ path('ajax') }}',
+                minLength: 2,
+            });
+        })
+    </script>
+{% endblock %}
+
+{% block body %}
+    <!-- Breadcromb Area Start -->
+    <section class="jobguru-breadcromb-area">
+
+    </section>
+    <!-- Breadcromb Area End -->
+
+    <!-- Top Job Area Start -->
+    <section class="jobguru-top-job-area browse-page section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="job-grid-right">
+                        <div class="banner-search">
+                            {{ form_start(searchForm) }}
+                            <div class="banner-form-box">
+                                <div class="banner-form-input">
+                                    {{ form_errors(searchForm.title) }}
+                                    {{ form_widget(searchForm.title) }}
+                                </div>
+                                <div class="banner-form-input">
+                                    {{ form_errors(searchForm.region) }}
+                                    {{ form_widget(searchForm.region, {'attr': {'placeholder':'Saisissez un département'}}) }}
+                                </div>
+                                <div class="banner-form-input">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                            {{ form_end(searchForm) }}
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            {% for job in jobs %}
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="sigle-top-job">
+                                        <div class="top-job-company-image">
+                                            <h3 class="jobGridTitle"><a href="{{ path('job_details', {'id':job.id}) }}">{{ job.title.name }}</a></h3>
+                                        </div>
+                                        <div class="top-job-company-desc">
+                                            <ul>
+                                                <li>{{ 'city'|trans }} <span class="company-state"><i class="fa fa-map-marker"></i> {{ job.city|capitalize }}</span></li>
+                                                <li>{{ 'type'|trans }} <span class="open-icon"><i class="fa fa-briefcase"></i> {{ job.type }}</span></li>
+                                                <li>{{ 'posted at'|trans }} <span class="varify calendar-icn"><i class="fa fa-calendar"></i> {{ job.postedAt|date('d/m/Y') }}</span></li>
+                                            </ul>
+                                            <div class="top-job-company-btn">
+                                                <a href="{{ path('job_details', {'id':job.id}) }}" class="jobguru-btn-2">{{ 'show more'|trans }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!-- end row -->
+
+                        <!-- end row -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    {#{{ knp_pagination_render(jobs) }}#}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end pagination row -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Top Job Area End -->
+{% endblock %}

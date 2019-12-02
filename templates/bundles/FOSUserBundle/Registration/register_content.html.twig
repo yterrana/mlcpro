@@ -1,0 +1,54 @@
+{% trans_default_domain 'base' %}
+
+<!-- Breadcromb Area Start -->
+<section class="jobguru-breadcromb-area">
+</section>
+<!-- Breadcromb Area End -->
+
+<!-- Login Area Start -->
+<section class="jobguru-login-area section_70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="login-box">
+                    <div class="login-title">
+                        <h3>{{ 'singup space'|trans }}</h3>
+                    </div>
+
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+                    {{ form_errors(form.email) }}
+                    <div class="single-login-field">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email) }}
+                    </div>
+{#                    {{ form_errors(form.firstname) }}#}
+{#                    <div class="single-login-field">#}
+{#                        {{ form_widget(form.firstname, {'attr': {'placeholder': 'firstname'|trans }}) }}#}
+{#                    </div>#}
+{#                    {{ form_errors(form.lastname) }}#}
+{#                    <div class="single-login-field">#}
+{#                        {{ form_widget(form.lastname, {'attr': {'placeholder': 'lastname'|trans }}) }}#}
+{#                    </div>#}
+                    {{ form_errors(form.username) }}
+                    <div class="single-login-field">
+                        {{ form_label(form.username) }}
+                        {{ form_widget(form.username) }}
+                    </div>
+                    {{ form_errors(form.plainPassword) }}
+                    <div class="single-login-field">
+                        {{ form_widget(form.plainPassword) }}
+                    </div>
+
+
+                    <div class="single-login-field text-center">
+                        <button type="submit">{{ 'sign up'|trans }}</button>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Login Area End -->
