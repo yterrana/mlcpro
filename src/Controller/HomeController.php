@@ -42,12 +42,12 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/about/vfc", name="about_vfc")
+     * @Route("/about/mlcpro", name="about_mlcpro")
      */
-    public function aboutVfc()
+    public function aboutMlcpro()
     {
 
-        return $this->render('home/about_vfc.html.twig');
+        return $this->render('home/about_mlcpro.html.twig');
     }
 
     /**

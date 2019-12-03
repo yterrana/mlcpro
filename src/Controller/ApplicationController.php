@@ -107,7 +107,7 @@ class ApplicationController extends AbstractController
             if (file_exists($createdZip)) {
                 $message = (new \Swift_Message('Candidature spontanée'))
                     ->setFrom('yterrana@gmail.com')
-                    ->setTo('yterrana@hotmail.fr')
+                    ->setTo('yterrana@gmail.com')
                     ->attach(\Swift_Attachment::fromPath($createdZip))
                     ->setBody(
                         $this->renderView(
@@ -128,7 +128,7 @@ class ApplicationController extends AbstractController
             else {
                 $message = (new \Swift_Message('Candidature spontanée'))
                     ->setFrom('yterrana@gmail.com')
-                    ->setTo('yterrana@hotmail.fr')
+                    ->setTo('yterrana@gmail.com')
                     ->setBody(
                         $this->renderView(
                             'Emails/index.html.twig',
@@ -146,7 +146,7 @@ class ApplicationController extends AbstractController
                 ;
             }
 
-            //$mailer->send($message);
+            $mailer->send($message);
 
             $this->addFlash('success', 'Votre candidature a bien été envoyée !');
 
@@ -248,7 +248,7 @@ class ApplicationController extends AbstractController
             if (file_exists($createdZip)) {
                 $message = (new \Swift_Message('Candidature'))
                     ->setFrom('yterrana@gmail.com')
-                    ->setTo('yterrana@hotmail.fr')
+                    ->setTo('yterrana@gmail.com')
                     ->attach(\Swift_Attachment::fromPath($createdZip))
                     ->setBody(
                         $this->renderView(
@@ -270,7 +270,7 @@ class ApplicationController extends AbstractController
             else {
                 $message = (new \Swift_Message('Candidature'))
                     ->setFrom('yterrana@gmail.com')
-                    ->setTo('yterrana@hotmail.fr')
+                    ->setTo('yterrana@gmail.com')
                     ->setBody(
                         $this->renderView(
                             'Emails/application_for.html.twig',
@@ -289,7 +289,7 @@ class ApplicationController extends AbstractController
                 ;
             }
 
-            //$mailer->send($message);
+            $mailer->send($message);
 
             $this->addFlash('success', 'Votre candidature a bien été envoyée !');
 

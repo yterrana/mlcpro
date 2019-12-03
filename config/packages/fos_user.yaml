@@ -7,4 +7,4 @@ fos_user:
 #      type: App\Form\RegistrationType
   from_email:
     address: "yterrana@hotmail.fr"
-    sender_name: "vfc"
+    sender_name: "mlcpro"

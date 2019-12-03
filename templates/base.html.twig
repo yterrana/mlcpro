@@ -9,9 +9,9 @@
         <meta name="description" content="Travail temporaire">
         <meta name="keyword" content="interim, cdi, travail temporaire, mission">
         <meta name="author" content="Yvan Terrana">
-        <title>{% block title %}VFC | Travail temporaire{% endblock %}</title>
+        <title>{% block title %}MLC Pro | Travail temporaire{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/vfc.jpg') }}">
+            <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/mlc.jpg') }}">
             <!--Bootstrap css-->
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
             <!--Font Awesome css-->
@@ -42,14 +42,14 @@
     </head>
     <body>
     <!-- Header Area Start -->
-        <header class="jobguru-header-area stick-top forsticky sticky {% if app.request.attributes.get('_route') in ["about_vfc", "about_mlcpro", "fos_user_security_login", "fos_user_registration_register", "dashboard_applications", "application"] %}page-header{% endif %}">
+        <header class="jobguru-header-area stick-top forsticky sticky {% if app.request.attributes.get('_route') in ["about_mlcpro", "fos_user_security_login", "fos_user_registration_register", "dashboard_applications", "application"] %}page-header{% endif %}">
             <div class="menu-animation">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-2">
                             <div class="site-logo">
                                 <a href="{{ path('home') }}">
-                                    <img src="{{ asset('assets/img/Logo VFC.jpg') }}" alt="logo vfc" class="stick-logo" />
+                                    <img src="{{ asset('assets/img/Logo MLC.jpg') }}" alt="logo mlcpro" class="stick-logo" />
                                 </a>
                             </div>
                             <!-- Responsive Menu Start -->
@@ -63,7 +63,7 @@
                                         <li class="active has-children">
                                             <a href="#">{{ 'societies'|trans }}</a>
                                             <ul>
-                                                <li><a href="{{ path('about_vfc') }}">{{ 'vfc'|trans }}</a></li>
+                                                <li><a href="{{ path('about_mlcpro') }}">{{ 'mlc pro'|trans }}</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -78,7 +78,6 @@
                                         <li><a href="{{ path('dashboard_applications') }}"><i class="fa fa-user"></i>{{ app.user.username }}</a></li>
                                     {% else %}
                                         <li><a href="{{ path('application') }}" class="post-jobs">{{ "post cv"|trans }}</a></li>
-                                        <li><a href="{{ path('fos_user_security_login') }}"><i class="fa fa-lock"></i>{{ 'login'|trans }}</a></li>
                                     {% endif %}
                                 </ul>
                             </div>
@@ -99,7 +98,7 @@
                         <div class="single-footer-widget">
                             <h3>{{ 'main links'|trans }}</h3>
                             <ul>
-                                <li><a href="{{ path('about_vfc') }}"><i class="fa fa-angle-double-right "></i> {{ 'about vfc'|trans }}</a></li>
+                                <li><a href="{{ path('about_mlcpro') }}"><i class="fa fa-angle-double-right "></i> {{ 'about mlcpro'|trans }}</a></li>
                                 <li><a href="{{ path('application') }}"><i class="fa fa-angle-double-right "></i> {{ 'post cv'|trans }}</a></li>
                             </ul>
                         </div>
@@ -107,16 +106,16 @@
                     <div class="col-lg-4 col-md-7">
                         <div class="single-footer-widget footer-contact">
                             <h3>{{ 'head office'|trans }}</h3>
-                            <p><i class="fa fa-map-marker"></i> Kirchwies 4, 66119 Saarbrücken</p>
-                            <p><i class="fa fa-phone"></i>+49 (0)681 / 988 36 482</p>
+                            <p><i class="fa fa-map-marker"></i> 9 rue Laplace, 57460 Behren-lès-Forbach</p>
+                            <p><i class="fa fa-phone"></i>03 87 13 02 74</p>
                             <p><i class="fa fa-mobile-phone"></i> 06 47 57 37 44</p>
                             <p><i class="fa fa-envelope-o"></i> <a href="mailto:vfc.secretariat@travailtemporaire.net">vfc.secretariat@travailtemporaire.net</a></p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-7">
                         <div class="single-footer-widget footer-contact">
-                            <h3>{{ 'branch'|trans }}</h3>
-                            <p><i class="fa fa-map-marker"></i> 9 rue Laplace, 57460 Behren-lès-Forbach </p>
+                            <h3>{{ 'agency'|trans }}</h3>
+                            <p><i class="fa fa-map-marker"></i> Bât F - 96, Boulevard de l'Europe, 13126 Vitrolles</p>
                             <p><i class="fa fa-phone"></i>03 87 13 02 74</p>
                             <p><i class="fa fa-mobile-phone"></i> 06 47 57 37 44</p>
                             <p><i class="fa fa-envelope-o"></i> <a href="mailto:vfc.secretariat@travailtemporaire.net">vfc.secretariat@travailtemporaire.net</a></p>
@@ -130,7 +129,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="copyright-left">
-                            <p>Copyright &copy; {{ "now"|date('Y') }} VFC. {{ 'all rights'|trans }}</p>
+                            <p>Copyright &copy; {{ "now"|date('Y') }} MLC Pro. {{ 'all rights'|trans }}</p>
                         </div>
                     </div>
                 </div>
